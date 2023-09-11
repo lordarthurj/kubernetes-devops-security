@@ -16,6 +16,11 @@ pipeline {
               sh "mvn test"              
             }
             post {
+              jacoco(
+                execPattern: '**/build/jacoco/*.exec',
+                classPattern: '**/build/classes/java/main',
+                sourcePattern: '**/src/main'
+              )
               always {
                 // junit '**/target/surefire-reports/*.xml'
                 //junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
