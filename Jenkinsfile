@@ -4,8 +4,8 @@ pipeline {
   stages {
       stage('Build Artifact') {
             steps {
-              //sh "mvn clean package -DskipTests=true"
-              sh "mvn clean package"
+              sh "mvn clean package -DskipTests=true"
+              //sh "mvn clean package"
               //archive 'target/*.jar' //so that they can be downloaded later
               archive 'target/*.jar'
             }
@@ -15,12 +15,7 @@ pipeline {
             steps {
               sh "mvn test"              
             }
-            post {
-              jacoco(
-                execPattern: '**/build/jacoco/*.exec',
-                classPattern: '**/build/classes/java/main',
-                sourcePattern: '**/src/main'
-              )
+            post {              
               always {
                 // junit '**/target/surefire-reports/*.xml'
                 //junit allowEmptyResults: true, testResults: '**/test-results/*.xml'
