@@ -67,6 +67,9 @@ java -version
 sudo apt install -y maven
 mvn -v
 
+# Latest version
+sudo apt install openjdk-17-jdk -y
+
 
 
 echo ".........----------------#################._.-.-JENKINS-.-._.#################----------------........."
